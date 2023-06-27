@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     ElasticsearchClientWrapper(login, password, fingerprint).use { client ->
         val helloWorldRequest = buildHelloWorldQuery()
         val helloWorldResponse = client.search(helloWorldRequest, Footballer::class.java)
-        println("Age: ${helloWorldResponse.hits().hits().first().source()?.age}")
+        printResults(helloWorldResponse)
 
         val positionRequest = buildPositionQuery()
         val positionResponse = client.search(positionRequest, Footballer::class.java)
